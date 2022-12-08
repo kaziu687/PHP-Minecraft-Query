@@ -102,6 +102,11 @@ class MinecraftPing
 
 		$Length = $this->ReadVarInt( ); // string length
 
+		if( $Length === 0 )
+		{
+			throw new MinecraftPingException( 'Server returned no JSON data' );
+		}
+
 		$Data = "";
 		while( \strlen( $Data ) < $Length )
 		{
