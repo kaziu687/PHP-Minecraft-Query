@@ -164,12 +164,23 @@ class MinecraftQuery
 		}
 
 		// Ints
-		$Info[ 'Players' ]    = (int)$Info[ 'Players' ];
-		$Info[ 'MaxPlayers' ] = (int)$Info[ 'MaxPlayers' ];
-		$Info[ 'HostPort' ]   = (int)$Info[ 'HostPort' ];
+		if( isset( $Info[ 'Players' ] ) )
+		{
+			$Info[ 'Players' ]    = IntVal( $Info[ 'Players' ] );
+		}
+
+		if( isset( $Info[ 'MaxPlayers' ] ) )
+		{
+			$Info[ 'MaxPlayers' ] = IntVal( $Info[ 'MaxPlayers' ] );
+		}
+
+		if( isset( $Info[ 'HostPort' ] ) )
+		{
+			$Info[ 'HostPort' ]   = IntVal( $Info[ 'HostPort' ] );
+		}
 
 		// Parse "plugins", if any
-		if( $Info[ 'Plugins' ] )
+		if( isset( $Info[ 'Plugins' ] ) )
 		{
 			$Data = \explode( ": ", $Info[ 'Plugins' ], 2 );
 
